@@ -13,6 +13,7 @@ class ParSort {
 
     public static void sort(int[] array, int from, int to) {
         if (to - from < cutoff) Arrays.sort(array, from, to);
+
         else {
             // FIXME next few lines should be removed from public repo.
             CompletableFuture<int[]> parsort1 = parsort(array, from, from + (to - from) / 2); // TO IMPLEMENT
@@ -50,7 +51,7 @@ class ParSort {
                     System.arraycopy(array, from, result, 0, result.length);
                     sort(result, 0, to - from);
                     return result;
-                }
+                },Main.myPool
         );
     }
 }
